@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- See http://mvnrepository.com/ for versions -->
+<ivy-module
+	version="2.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy2/schemas/ivy.xsd">
+
+    <info organisation="achacha.org" module="JXmlRulesEngine"/>
+    <dependencies>
+        <dependency org="commons-lang" name="commons-lang" rev="2.6"/>
+        <dependency org="log4j" name="log4j" rev="1.2.16"/>
+		<dependency org="commons-cli" name="commons-cli" rev="1.2"/>
+		<dependency org="commons-codec" name="commons-codec" rev="1.6"/>
+    </dependencies>
+</ivy-module>
