@@ -29,6 +29,9 @@ public class RulesMainCLI
   private String FOOTER = "Usage: do.sh -p /path/to/my_rulesset/ -r my_request.xml";
 
   // Logging level
+  private String basePath;
+  private String requestPath;
+  private String outputPath;
   private int loggingLevel = 1;
 
   /**
@@ -37,10 +40,11 @@ public class RulesMainCLI
   public static void main(String[] args)
   {
     RulesEngineGlobal.initLog4j();
-    new RulesMainCLI().doit(args);
+    RulesMainCLI me = new RulesMainCLI(args);
+    me.executeRule();
   }
-
-  private void doit(String[] args)
+  
+  public RulesMainCLI(String[] args)
   {
     if (args.length < 1)
     {
@@ -90,6 +94,7 @@ public class RulesMainCLI
       System.err.println("Base path (-p) is required");
       return;
     }
+    basePath = basePaths[0];
     
     String[] requestPaths = cl.getOptionValues('r');
     if (null == requestPaths)
@@ -97,26 +102,34 @@ public class RulesMainCLI
       System.err.println("Request (-r) is required");
       return;
     }
-
-    String[] outputPaths = cl.getOptionValues('o');
+    requestPath = requestPaths[0];
     
+    String[] outputPaths = cl.getOptionValues('o');
+    if (null != outputPaths)
+    {
+      outputPath = outputPaths[0];
+    }
+  }
+  
+  private void executeRule()
+  {
     // Init rules engine
-    RulesEngineGlobal.create(basePaths[0]);
+    RulesEngineGlobal.create(basePath);
 
     // Read the request XML
-    File requestFile = new File(requestPaths[0]);
+    File requestFile = new File(requestPath);
     Document requestDoc = RulesEngineHelper.loadXmlDocument(requestFile);
     
     // Execute rule
     RuleContext ruleContext = RulesEngineGlobal.getInstance().getRulesEngine().createContext(requestDoc.getRootElement(), loggingLevel);
     RulesEngineGlobal.getInstance().getRulesEngine().execute(ruleContext);
     
-    if (null != outputPaths)
+    if (null != outputPath)
     {
-      File outfile = new File(outputPaths[0]);
+      File outfile = new File(outputPath);
       try
       {
-        System.out.println("Writing output to: "+outputPaths[0]);
+        System.out.println("Writing output to: "+outputPath);
         FileWriter writer = new FileWriter(outfile);
         writer.write(ruleContext.getOutputModel().asXML());
         writer.close();
@@ -126,11 +139,10 @@ public class RulesMainCLI
         
         e.printStackTrace();
       }
-      
     }
     else
     {
-      System.out.println(ruleContext);
+      System.out.println(ruleContext.getOutputModel().asXML());
     }
   }
 }
