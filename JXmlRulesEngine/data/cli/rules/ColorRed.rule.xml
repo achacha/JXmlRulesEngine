@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Rule Version="1">
+  <Case>
+    <If Operator="AND">
+      <Condition Operator="Include">
+        <Path>IsColorRed.conditions.xml</Path>
+      </Condition>
+    </If>
+    <Then>
+      <Action Operator="Include">
+        <Path>SetOutputFlagToYes.action.xml</Path>
+      </Action>
+    </Then>
+  </Case>
+  <Else>
+    <Action Operator="Include">
+      <Path>SetOutputFlagToNo.action.xml</Path>
+    </Action>
+  </Else>
+</Rule>

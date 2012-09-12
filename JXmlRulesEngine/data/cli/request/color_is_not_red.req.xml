@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sample input to be used in processing the rules -->
+<request>
+  <input>
+    <item>
+      <color>purple</color>
+    </item>
+  </input>
+  <rules-to-execute>
+    <Rule>ColorRed.rule.xml</Rule>
+  </rules-to-execute>
+</request>

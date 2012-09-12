@@ -13,6 +13,13 @@ import org.achacha.rules.engine.factory.RulesEngineFactory;
  */
 public class RulesEngineLoaderImplFileSystem extends RulesEngineLoader
 {
+  /** Default conditions subdir */
+  public static final String DEFAULT_CONDITIONS_DIR = "conditions";
+  /** Default actions subdir */
+  public static final String DEFAULT_ACTIONS_DIR = "actions";
+  /** Default rules subdir */
+  public static final String DEFAULT_RULES_DIR = "rules";
+  
   /** Base rule directory */
   protected File mBaseRuleDir;
 
@@ -23,7 +30,21 @@ public class RulesEngineLoaderImplFileSystem extends RulesEngineLoader
   protected File mBaseActionsDir;
 
   /**
-   * Ctor with String base dir
+   * Ctor with String base dir implying default subdirs
+   * 
+   * @param factory RulesEngineFactory
+   * @param baseDir String
+   */
+  public RulesEngineLoaderImplFileSystem(RulesEngineFactory factory, String baseDir)
+  {
+    super(factory);
+    mBaseRuleDir = new File(baseDir, DEFAULT_RULES_DIR);
+    mBaseConditionsDir = new File(baseDir, DEFAULT_CONDITIONS_DIR);
+    mBaseActionsDir = new File(baseDir, DEFAULT_ACTIONS_DIR);
+  }
+
+  /**
+   * Ctor with String base dirs for each conditions, actions and rules
    * 
    * @param factory RulesEngineFactory
    * @param baseRuleDir String

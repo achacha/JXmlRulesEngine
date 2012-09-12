@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Compare a constant 'red' with the contents of the input model at xpath /item/color
+-->
+<If Operator="AND">
+  <Condition Operator="StringEquals">
+    <Value Source="Constant">
+      <Data>red</Data>
+    </Value>
+    <Value Source="InputModel">
+      <Path>item/color</Path>
+    </Value>
+  </Condition>
+</If>

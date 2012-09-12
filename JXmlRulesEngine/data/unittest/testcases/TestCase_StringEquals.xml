@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<request>
+  <input>
+    <data0>foo1</data0>
+    <data1>foo1</data1>
+  </input>
+  <rules-to-execute>
+    <Rule>StringEquals.rule.xml</Rule>
+  </rules-to-execute>
+  <!--logging-level>5</logging-level-->
+  <output>
+    <result>yes</result>
+  </output>
+</request>

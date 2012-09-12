@@ -7,11 +7,11 @@
 				<pathelement location="ivy.jar" />
 			</classpath>
 		</taskdef>
-		<mkdir dir="bin"/>
-		<mkdir dir="build"/>
-		<mkdir dir="dist"/>
-		<mkdir dir="lib"/>
-		<mkdir dir="../external_lib"/>
+		<mkdir dir="bin" />
+		<mkdir dir="build" />
+		<mkdir dir="dist" />
+		<mkdir dir="lib" />
+		<mkdir dir="../external_lib" />
 	</target>
 
 	<target name="ivy.report">
@@ -21,7 +21,7 @@
 
 	<target name="ivy.clean" description="- Remove project specific library files retrieved by Ivy">
 		<delete includeemptydirs="true" failonerror="false">
-			<fileset dir="${ivy.lib.dir}" includes="**/*"/>
+			<fileset dir="${ivy.lib.dir}" includes="**/*" />
 		</delete>
 	</target>
 
@@ -39,65 +39,80 @@
 
 	<target name="build.clean" description="- Remove all intermediate build files">
 		<delete includeemptydirs="true" failonerror="false">
-			<fileset dir="bin" includes="**/*"/>
+			<fileset dir="bin" includes="**/*" />
 		</delete>
-		<delete file="build/JXmlRulesEngine.jar" failonerror="false"/>
+		<delete file="build/JXmlRulesEngine.jar" failonerror="false" />
 	</target>
 
 	<target name="resolve" depends="ivy.resolve" description="- Gather all libs">
 		<echo message="Copying JAR files from ../external_lib to lib" />
 		<copy todir="lib">
 			<fileset dir="../external_lib" includes="*.jar">
-				<exclude name="**/*-javadoc*"/>
-				<exclude name="**/*-sources*"/>
+				<exclude name="**/*-javadoc*" />
+				<exclude name="**/*-sources*" />
 			</fileset>
 		</copy>
 	</target>
 
 	<path id="lib.path.ref">
-		<fileset dir="lib" includes="*.jar"/>
+		<fileset dir="lib" includes="*.jar" />
 	</path>
 
 	<target name="build.create" description="- Build java classes">
-		<javac 
-			srcdir="src" 
-			destdir="bin" 
-			classpathref="lib.path.ref" 
-			includeantruntime="false"
-		/>
+		<javac srcdir="src" destdir="bin" classpathref="lib.path.ref" includeantruntime="false" />
 	</target>
 
 	<path id="exec.lib.path.ref">
-		<fileset dir="lib" includes="*.jar"/>
-		<fileset dir="build" includes="*.jar"/>
+		<fileset dir="lib" includes="*.jar" />
+		<fileset dir="build" includes="*.jar" />
+	</path>
+
+	<path id="test.lib.path.ref">
+		<fileset dir="lib" includes="*.jar" />
+		<fileset dir="build" includes="*.jar" />
+		<pathelement location="data/unittest/" />
 	</path>
 
 	<target name="build.jar" depends="build.create" description="- Build jar file">
-		<jar basedir="bin" destfile="build/LogDataBase.jar">
-			<fileset dir="bin"/>
-			<fileset dir="classes"/>
+		<jar basedir="bin" destfile="build/JXmlRulesEngine.jar">
+			<fileset dir="bin" />
+			<fileset dir="classes" />
 		</jar>
 	</target>
 
-	<target name="clean" depends="ivy.clean,build.clean,dist.clean" description="- Clean ALL intermediate files"/>
-	
-	<target name="dist.clean" description="- Clean distribution directories">
-		<delete dir="dist"/>
-		<mkdir dir="dist"/>
+	<target name="test" depends="build.jar" description="- Run all the unit tests">
+		<junit printsummary="on">
+			<classpath refid="test.lib.path.ref" />
+			<formatter type="brief" usefile="false" />
+			<test name="org.achacha.rules.test.TestFileSystemRuleExecution" />
+			<test name="org.achacha.rules.test.TestEventVisitor" />
+			<test name="org.achacha.rules.test.TestLocalLoaderRuleExecution" />
+			<test name="org.achacha.rules.test.TestPojoProcessor" />
+		</junit>
 	</target>
-	
+
+	<target name="clean" depends="ivy.clean,build.clean,dist.clean" description="- Clean ALL intermediate files" />
+
+	<target name="dist.clean" description="- Clean distribution directories">
+		<delete dir="dist" />
+		<mkdir dir="dist" />
+	</target>
+
 	<target name="dist" depends="resolve,dist.clean,build.jar" description="- Build package for distribution">
-		<mkdir dir="dist/JXmlRulesEngine/lib"/>
-		<copy tofile="dist/JXmlRulesEngine/do.sh" file="do.dist.sh"/>
-		<chmod file="dist/JXmlRulesEngine/do.sh" perm="+x"/>  
-		<copy todir="dist/JXmlRulesEngine/lib" file="build/LogDataBase.jar"/>
+		<mkdir dir="dist/JXmlRulesEngine/lib" />
+		<copy tofile="dist/JXmlRulesEngine/do.sh" file="dist_base/do.sh" />
+		<chmod file="dist/JXmlRulesEngine/do.sh" perm="+x" />
+		<copy todir="dist/JXmlRulesEngine/lib" file="build/JXmlRulesEngine.jar" />
 		<copy todir="dist/JXmlRulesEngine/lib">
 			<fileset dir="lib" includes="*.jar">
-				<exclude name="**/*-javadoc*"/>
-				<exclude name="**/*-sources*"/>
+				<exclude name="**/*-javadoc*" />
+				<exclude name="**/*-sources*" />
 			</fileset>
 		</copy>
-		<tar basedir="dist" compression="gzip" destfile="JXmlRulesEngine.tar.gz"/>
+    <copy todir="dist/JXmlRulesEngine/classes">
+      <fileset dir="classes" includes="*" />
+    </copy>
+		<tar basedir="dist" compression="gzip" destfile="dist/JXmlRulesEngine.tar.gz" />
 	</target>
 
 </project>

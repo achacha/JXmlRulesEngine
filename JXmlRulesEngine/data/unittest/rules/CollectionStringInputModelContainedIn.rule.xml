@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Rule Version="1">
+  <Case>
+    <If Operator="AND">
+      <Condition Operator="Include">
+        <Path>collection/CollectionStringInputModelContainedIn.conditions.xml</Path>
+      </Condition>
+    </If>
+    <Then>
+      <Action Operator="Include">
+        <Path>Yes.actions.xml</Path>
+      </Action>
+    </Then>
+  </Case>
+  <Else>
+    <Action Operator="Include">
+      <Path>No.actions.xml</Path>
+    </Action>
+  </Else>
+</Rule>

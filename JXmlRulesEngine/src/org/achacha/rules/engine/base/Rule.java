@@ -46,7 +46,7 @@ public class Rule implements XmlSerializable, Serializable, JsonEmittable, JsonP
   public static final String ATTR_LABEL = "Label";
 
   /** Extension that the rule will have */
-  public static final String RULE_EXTENSION = ".rule";
+  public static final String RULE_EXTENSION = ".xml";
 
   /** Label */
   protected String mLabel;

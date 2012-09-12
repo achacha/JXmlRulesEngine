@@ -97,11 +97,9 @@ public final class RulesEngineHelper
       reader = new SAXReader();
       // Sets the character encoding. Should always be UTF-8!
       reader.setEncoding(DEFAULT_ENCODING);
-      // Sets features (standard parsing modes defined by w3c)
       // Feature: Don't load external DTDs.
-      reader.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-      // Whether to ignore commens (skip over them and don't add them to
-      // the document tree).
+      reader.setIncludeExternalDTDDeclarations(false);
+      // Whether to ignore commens (skip over them and don't add them to the document tree).
       reader.setIgnoreComments(false);
       // When you get two text nodes in a row, combine them into one. You
       // can only get two text nodes in a row in very weird situations

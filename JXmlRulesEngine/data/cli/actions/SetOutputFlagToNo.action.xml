@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- If the rule conditions execute this action, it will set a value on the output -->
+<Actions Name="yes.actions" Version="1">
+  <Action Operator="OutputValueSet">
+    <Path>/ItemIsRed</Path>
+    <Value Source="Constant"><Data>no</Data></Value>
+  </Action>
+</Actions>

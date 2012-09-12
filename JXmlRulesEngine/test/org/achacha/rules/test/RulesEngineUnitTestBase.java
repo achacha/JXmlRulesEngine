@@ -29,9 +29,6 @@ public class RulesEngineUnitTestBase extends TestCase
   /** Extension of the rule actions fragment */
   public static final String EXT_ACTIONS = ".actions";
 
-  /** Context files to load */
-  protected static final String[] SPRING_CONTEXTS = { "context/cache-context.xml", "context/rulesengine-context.xml" };
-
   /** factory */
   protected RulesEngineFactory mFactory = new RulesEngineFactory();
 
@@ -41,16 +38,14 @@ public class RulesEngineUnitTestBase extends TestCase
   /** Test case extension */
   protected static final String EXT_TESTCASE = ".xml";
 
-  protected String mBaseRuleDir;
-  protected String mBaseConditionsDir;
-  protected String mBaseActionsDir;
+  protected String mBaseDir;
   protected String mBaseTestCaseDir;
 
   /**
    * Rules engine based on file system loader in the config Lazy init during call to getter
    */
-  private RulesEngine mRulesEngine;
-
+  protected RulesEngine mRulesEngine;
+  
   /**
    * {@inheritDoc}
    */
@@ -86,10 +81,8 @@ public class RulesEngineUnitTestBase extends TestCase
     String basepath = pathfile.substring(0, slashpos + 1);
     // System.out.println("BASE_PATH="+basepath);
 
-    mBaseRuleDir = basepath + mProperties.getProperty("unittest.ruledata.rule.dir");
-    mBaseConditionsDir = basepath + mProperties.getProperty("unittest.ruledata.conditions.dir");
-    mBaseActionsDir = basepath + mProperties.getProperty("unittest.ruledata.actions.dir");
-    mBaseTestCaseDir = basepath + mProperties.getProperty("unittest.ruledata.testcases.dir");
+    mBaseDir = basepath;
+    mBaseTestCaseDir = basepath + mProperties.getProperty("unittest.testcase.dir");
   }
 
   /**
@@ -117,7 +110,7 @@ public class RulesEngineUnitTestBase extends TestCase
    */
   public RulesEngineLoader getFileSystemLoader()
   {
-    RulesEngineLoaderImplFileSystem loader = new RulesEngineLoaderImplFileSystem(mFactory, mBaseRuleDir, mBaseConditionsDir, mBaseActionsDir);
+    RulesEngineLoaderImplFileSystem loader = new RulesEngineLoaderImplFileSystem(mFactory, mBaseDir);
 
     return loader;
   }
@@ -133,18 +126,18 @@ public class RulesEngineUnitTestBase extends TestCase
     getInDir(new File(mBaseTestCaseDir), "", names, EXT_TESTCASE);
     return names;
   }
-
-  /**
-   * Get all rule names recursively
-   * 
-   * @return list of all rule names in a given directory
-   */
-  public List<String> getAllRules()
-  {
-    List<String> names = new LinkedList<String>();
-    getInDir(new File(mBaseRuleDir), "", names, EXT_RULE);
-    return names;
-  }
+//
+//  /**
+//   * Get all rule names recursively
+//   * 
+//   * @return list of all rule names in a given directory
+//   */
+//  public List<String> getAllRules()
+//  {
+//    List<String> names = new LinkedList<String>();
+//    getInDir(new File(mBaseRuleDir), "", names, EXT_RULE);
+//    return names;
+//  }
 
   /**
    * Get all rule names for a given directory
@@ -197,12 +190,8 @@ public class RulesEngineUnitTestBase extends TestCase
     File file = new File(".");
     builder.append(file.getAbsolutePath());
 
-    builder.append("\r\nBaseRuleDir=");
-    builder.append(mBaseRuleDir);
-    builder.append("\r\nBaseConditionsDir=");
-    builder.append(mBaseConditionsDir);
-    builder.append("\r\nBaseActionsDir=");
-    builder.append(mBaseActionsDir);
+    builder.append("\r\nBaseDir=");
+    builder.append(mBaseDir);
     builder.append("\r\nBaseTestCaseDir=");
     builder.append(mBaseTestCaseDir);
 
