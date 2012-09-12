@@ -1,0 +1,29 @@
+<If Operator="AND">
+  <Condition Operator="Exists">
+    <Value Source="InputModel">
+      <Path>red/green/blue</Path>
+    </Value>
+    <Value Source="InputModel">
+      <Path>cyan/magenta/yellow/black</Path>
+    </Value>
+  </Condition>
+  <Condition Operator="Exists" Not="true">
+    <Value Source="InputModel">
+      <Path>does/not/exist</Path>
+    </Value>
+  </Condition>
+
+  <Condition Operator="NotExists" Not="true">
+    <Value Source="InputModel">
+      <Path>red/green/blue</Path>
+    </Value>
+    <Value Source="InputModel">
+      <Path>cyan/magenta/yellow/black</Path>
+    </Value>
+  </Condition>
+  <Condition Operator="NotExists">
+    <Value Source="InputModel">
+      <Path>does/not/exist</Path>
+    </Value>
+  </Condition>
+</If>

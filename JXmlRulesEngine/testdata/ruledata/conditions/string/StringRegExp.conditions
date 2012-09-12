@@ -1,0 +1,10 @@
+<If Operator="AND">
+  <Condition Operator="StringRegExp">
+    <Value Source="Constant">
+      <Data>Leutenant Commander Data</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>[A-Za-z ]+Data</Data>
+    </Value>
+  </Condition>
+</If>

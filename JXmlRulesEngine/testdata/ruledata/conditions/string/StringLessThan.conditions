@@ -1,0 +1,10 @@
+<If Operator="AND">
+  <Condition Operator="StringLessThan">
+    <Value Source="Constant">
+      <Data>Kirk</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>Pickard</Data>
+    </Value>
+  </Condition>
+</If>

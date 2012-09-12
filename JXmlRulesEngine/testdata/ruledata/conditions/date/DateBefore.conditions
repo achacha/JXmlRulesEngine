@@ -1,0 +1,86 @@
+<If Operator="AND">
+  <Condition Operator="DateBefore">
+    <Value Source="Constant">
+      <Data>2008-06-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-06-24</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="DateBefore">
+    <Value Source="Constant">
+      <Data>2009-05-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-06-24</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="DateBefore">
+    <Value Source="Constant">
+      <Data>2009-06-23</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-06-24</Data>
+    </Value>
+  </Condition>
+
+  <Condition Operator="DateBefore" Not="true">
+    <Value Source="Constant">
+      <Data>2009-07-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-06-24</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="DateBefore" Not="true">
+    <Value Source="Constant">
+      <Data>2009-06-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-05-25</Data>
+    </Value>
+  </Condition>
+
+  <Condition Operator="DateNotBefore" Not="true">
+    <Value Source="Constant">
+      <Data>2008-06-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-06-24</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="DateNotBefore" Not="true">
+    <Value Source="Constant">
+      <Data>2009-05-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-06-24</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="DateNotBefore" Not="true">
+    <Value Source="Constant">
+      <Data>2009-06-23</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-06-24</Data>
+    </Value>
+  </Condition>
+
+  <Condition Operator="DateNotBefore">
+    <Value Source="Constant">
+      <Data>2009-07-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-06-24</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="DateNotBefore">
+    <Value Source="Constant">
+      <Data>2009-06-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-05-25</Data>
+    </Value>
+  </Condition>
+
+</If>

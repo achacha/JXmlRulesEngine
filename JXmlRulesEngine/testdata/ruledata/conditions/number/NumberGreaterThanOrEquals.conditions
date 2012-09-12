@@ -1,0 +1,51 @@
+<If Operator="AND">
+  <Condition Operator="NumberGreaterThanOrEquals">
+    <Value Source="Constant">
+      <Data>21</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="NumberGreaterThanOrEquals">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="NumberGreaterThanOrEquals" Not="true">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>21</Data>
+    </Value>
+  </Condition>
+
+  <Condition Operator="NumberNotGreaterThanOrEquals" Not="true">
+    <Value Source="Constant">
+      <Data>21</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="NumberNotGreaterThanOrEquals" Not="true">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="NumberNotGreaterThanOrEquals">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>21</Data>
+    </Value>
+  </Condition>
+</If>

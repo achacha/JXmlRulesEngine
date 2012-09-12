@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<request>
+  <input>
+    <clickstream>
+      <Entry>http://www.google.com/search?q=foo</Entry>
+      <Entry>http://www.yahoo.com/search?q=foo</Entry>
+      <Entry>http://www.google.com/search?q=foo</Entry>
+      <Entry>http://www.google.com/search?q=foo</Entry>
+      <Entry>http://www.altavista.com/search?q=foo</Entry>
+      <Entry>http://www.google.com/search?q=foo</Entry>
+    </clickstream>
+  </input>
+  <rules-to-execute>
+    <Rule>CollectionStringInputModelContains.rule</Rule>
+  </rules-to-execute>
+  <!--logging-level>5</logging-level-->
+  <output>
+    <result>yes</result>
+  </output>
+</request>

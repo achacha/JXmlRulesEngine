@@ -1,0 +1,10 @@
+<If Operator="AND">
+  <Condition Operator="StringContains">
+    <Value Source="Constant">
+      <Data>Leutenant Commander Data</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>Data</Data>
+    </Value>
+  </Condition>
+</If>

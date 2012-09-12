@@ -1,0 +1,35 @@
+<If Operator="AND">
+  <Condition Operator="NumberEquals">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="NumberEquals" Not="true">
+    <Value Source="Constant">
+      <Data>42</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+
+  <Condition Operator="NumberNotEquals" Not="true">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="NumberNotEquals">
+    <Value Source="Constant">
+      <Data>42</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+</If>

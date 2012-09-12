@@ -1,0 +1,39 @@
+<If Operator="AND">
+  <Condition Operator="CollectionStringContainedIn">
+    <Value Source="Constant">
+      <Data>cyan</Data>
+    </Value>
+    <Value Source="CollectionStringInputModel">
+      <Path>colors</Path>
+      <Content>
+	      <Entry>white</Entry>
+	      <Entry>red</Entry>
+	      <Entry>green</Entry>
+	      <Entry>blue</Entry>
+	      <Entry>cyan</Entry>
+	      <Entry>magenta</Entry>
+	      <Entry>yellow</Entry>
+	      <Entry>black</Entry>
+      </Content>
+    </Value>
+  </Condition>
+
+  <Condition Operator="CollectionStringNotContainedIn">
+    <Value Source="Constant">
+      <Data>should.not.be.found</Data>
+    </Value>
+    <Value Source="CollectionStringInputModel">
+      <Path>colors</Path>
+      <Content>
+	      <Entry>white</Entry>
+	      <Entry>red</Entry>
+	      <Entry>green</Entry>
+	      <Entry>blue</Entry>
+	      <Entry>cyan</Entry>
+	      <Entry>magenta</Entry>
+	      <Entry>yellow</Entry>
+	      <Entry>black</Entry>
+      </Content>
+    </Value>
+  </Condition>
+</If>

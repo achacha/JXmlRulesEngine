@@ -1,0 +1,35 @@
+<If Operator="AND">
+  <Condition Operator="NumberLessThan">
+    <Value Source="Constant">
+      <Data>6</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="NumberLessThan" Not="true">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>6</Data>
+    </Value>
+  </Condition>
+
+  <Condition Operator="NumberNotLessThan" Not="true">
+    <Value Source="Constant">
+      <Data>6</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="NumberNotLessThan">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>6</Data>
+    </Value>
+  </Condition>
+</If>

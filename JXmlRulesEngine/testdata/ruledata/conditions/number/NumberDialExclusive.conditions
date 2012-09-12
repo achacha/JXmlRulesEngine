@@ -1,0 +1,115 @@
+<If Operator="AND">
+  <!-- 6 in (4,9) over (1,13) -->
+  <Condition Operator="NumberDialExclusive">
+    <Value Source="Constant">
+      <Data>6</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>1</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+  
+  <!-- NOT 4 in (4,9) over (1,13) -->
+  <Condition Operator="NumberDialExclusive" Not="true">
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>1</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+
+  <!-- NOT 13 in (4,9) over (1,13) -->
+  <Condition Operator="NumberDialExclusive" Not="true">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>1</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+  </Condition>
+
+  <!-- 1 in (10,2) over (0,11) -->
+  <Condition Operator="NumberDialExclusive">
+    <Value Source="Constant">
+      <Data>1</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>10</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>0</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>11</Data>
+    </Value>
+  </Condition>
+
+  <!-- NOT 10 in (10,2) over (0,11) -->
+  <Condition Operator="NumberDialExclusive" Not="true">
+    <Value Source="Constant">
+      <Data>10</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>10</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>0</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>11</Data>
+    </Value>
+  </Condition>
+
+  <!-- NOT 9 in (10,2) over (0,11) -->
+  <Condition Operator="NumberDialExclusive" Not="true">
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>10</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>0</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>11</Data>
+    </Value>
+  </Condition>
+</If>

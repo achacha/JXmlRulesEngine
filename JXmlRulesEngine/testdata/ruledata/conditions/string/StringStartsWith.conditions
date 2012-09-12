@@ -1,0 +1,10 @@
+<If Operator="AND">
+  <Condition Operator="StringStartsWith">
+    <Value Source="Constant">
+      <Data>Leutenant Commander Data</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>Leutenant</Data>
+    </Value>
+  </Condition>
+</If>

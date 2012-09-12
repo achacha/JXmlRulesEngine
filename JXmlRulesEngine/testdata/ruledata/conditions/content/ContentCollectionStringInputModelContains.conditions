@@ -1,0 +1,35 @@
+<If Operator="AND">
+  <Condition Operator="CollectionStringContains">
+    <Value Source="CollectionStringInputModel">
+      <Path>clickstream</Path>
+      <Content>
+        <Entry>http://www.google.com/search?q=foo</Entry>
+        <Entry>http://www.yahoo.com/search?q=foo</Entry>
+        <Entry>http://www.google.com/search?q=foo</Entry>
+        <Entry>http://www.google.com/search?q=foo</Entry>
+        <Entry>http://www.altavista.com/search?q=foo</Entry>
+        <Entry>http://www.google.com/search?q=foo</Entry>
+      </Content>
+    </Value>
+    <Value Source="Constant">
+      <Data>www.yahoo.com</Data>
+    </Value>
+  </Condition>
+
+  <Condition Operator="CollectionStringNotContains">
+    <Value Source="CollectionStringInputModel">
+      <Path>clickstream</Path>
+      <Content>
+        <Entry>http://www.google.com/search?q=foo</Entry>
+        <Entry>http://www.yahoo.com/search?q=foo</Entry>
+        <Entry>http://www.google.com/search?q=foo</Entry>
+        <Entry>http://www.google.com/search?q=foo</Entry>
+        <Entry>http://www.altavista.com/search?q=foo</Entry>
+        <Entry>http://www.google.com/search?q=foo</Entry>
+      </Content>
+    </Value>
+    <Value Source="Constant">
+      <Data>should.not.be.found</Data>
+    </Value>
+  </Condition>
+</If>

@@ -1,0 +1,77 @@
+<If Operator="AND">
+  <Condition Operator="DateEquals">
+    <Value Source="Constant">
+      <Data>2009-09-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-09-24</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="DateEquals">
+    <Value Source="Constant">
+      <!-- EEE, dd MMM yyyy HH:mm:ss Z -->
+      <Data>WED, 04 JUN 2009 00:00:00 PST</Data>
+    </Value>
+    <Value Source="Constant">
+      <!-- EEE, dd MMM yyyy HH:mm:ss Z -->
+      <Data>WED, 04 JUN 2009 00:00:00 PST</Data>
+    </Value>
+  </Condition>
+
+  <Condition Operator="DateEquals" Not="true">
+    <Value Source="Constant">
+      <Data>2009-09-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-05-24</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="DateEquals" Not="true">
+    <Value Source="Constant">
+      <!-- EEE, dd MMM yyyy HH:mm:ss Z -->
+      <Data>WED, 04 JUN 2009 00:00:00 CST</Data>
+    </Value>
+    <Value Source="Constant">
+      <!-- EEE, dd MMM yyyy HH:mm:ss Z -->
+      <Data>WED, 04 JUN 2009 00:00:00 PST</Data>
+    </Value>
+  </Condition>
+
+  <Condition Operator="DateNotEquals" Not="true">
+    <Value Source="Constant">
+      <Data>2009-09-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-09-24</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="DateNotEquals" Not="true">
+    <Value Source="Constant">
+      <!-- EEE, dd MMM yyyy HH:mm:ss Z -->
+      <Data>WED, 04 JUN 2009 00:00:00 PST</Data>
+    </Value>
+    <Value Source="Constant">
+      <!-- EEE, dd MMM yyyy HH:mm:ss Z -->
+      <Data>WED, 04 JUN 2009 00:00:00 PST</Data>
+    </Value>
+  </Condition>
+
+  <Condition Operator="DateNotEquals">
+    <Value Source="Constant">
+      <Data>2009-09-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2009-05-24</Data>
+    </Value>
+  </Condition>
+  <Condition Operator="DateNotEquals">
+    <Value Source="Constant">
+      <!-- EEE, dd MMM yyyy HH:mm:ss Z -->
+      <Data>WED, 04 JUN 2009 00:00:00 CST</Data>
+    </Value>
+    <Value Source="Constant">
+      <!-- EEE, dd MMM yyyy HH:mm:ss Z -->
+      <Data>WED, 04 JUN 2009 00:00:00 PST</Data>
+    </Value>
+  </Condition>
+</If>

@@ -1,0 +1,13 @@
+<If Operator="AND">
+  <Condition Operator="BooleanFalse">
+    <Value Source="Constant">
+      <Data>false</Data>
+    </Value>
+  </Condition>
+
+  <Condition Operator="BooleanFalse" Not="true">
+    <Value Source="Constant">
+      <Data>true</Data>
+    </Value>
+  </Condition>
+</If>

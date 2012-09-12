@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<request>
+  <input/>
+  <rules-to-execute>
+    <Rule>StringKitchenSink.rule</Rule>
+  </rules-to-execute>
+  <!--logging-level>5</logging-level-->
+  <output>
+    <result>yes</result>
+  </output>
+</request>

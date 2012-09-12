@@ -1,0 +1,19 @@
+<If Operator="AND">
+  <Condition Operator="CollectionStringContainedIn">
+    <Value Source="Constant">
+      <Data>blue</Data>
+    </Value>
+    <Value Source="CollectionStringInputModel">
+      <Path>clickstream</Path>
+    </Value>
+  </Condition>
+
+  <Condition Operator="CollectionStringNotContainedIn">
+    <Value Source="Constant">
+      <Data>should.not.be.found</Data>
+    </Value>
+    <Value Source="CollectionStringInputModel">
+      <Path>clickstream</Path>
+    </Value>
+  </Condition>
+</If>

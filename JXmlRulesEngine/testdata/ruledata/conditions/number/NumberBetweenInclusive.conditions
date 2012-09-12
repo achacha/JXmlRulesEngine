@@ -1,0 +1,157 @@
+<If Operator="AND">
+  <!-- 6 in (4,9) -->
+  <Condition Operator="NumberBetweenInclusive">
+    <Value Source="Constant">
+      <Data>6</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+  </Condition>
+  
+  <!-- 4 in (4,9) -->
+  <Condition Operator="NumberBetweenInclusive">
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+  </Condition>
+
+  <!-- NOT 13 in (4,9) -->
+  <Condition Operator="NumberBetweenInclusive" Not="true">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+  </Condition>
+
+  <!-- NOT 1 in (10,2) -->
+  <Condition Operator="NumberBetweenInclusive" Not="true">
+    <Value Source="Constant">
+      <Data>1</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>10</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2</Data>
+    </Value>
+  </Condition>
+
+  <!-- 2 in (10,2) -->
+  <Condition Operator="NumberBetweenInclusive">
+    <Value Source="Constant">
+      <Data>2</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>10</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2</Data>
+    </Value>
+  </Condition>
+
+  <!-- 9 in (10,2) -->
+  <Condition Operator="NumberBetweenInclusive">
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>10</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2</Data>
+    </Value>
+  </Condition>
+
+  <!-- 6 in (4,9) -->
+  <Condition Operator="NumberNotBetweenInclusive" Not="true">
+    <Value Source="Constant">
+      <Data>6</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+  </Condition>
+  
+  <!-- 4 in (4,9) -->
+  <Condition Operator="NumberNotBetweenInclusive" Not="true">
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+  </Condition>
+
+  <!-- NOT 13 in (4,9) -->
+  <Condition Operator="NumberNotBetweenInclusive">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>4</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+  </Condition>
+
+  <!-- NOT 1 in (10,2) -->
+  <Condition Operator="NumberNotBetweenInclusive">
+    <Value Source="Constant">
+      <Data>1</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>10</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2</Data>
+    </Value>
+  </Condition>
+
+  <!-- 2 in (10,2) -->
+  <Condition Operator="NumberNotBetweenInclusive" Not="true">
+    <Value Source="Constant">
+      <Data>2</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>10</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2</Data>
+    </Value>
+  </Condition>
+
+  <!-- 9 in (10,2) -->
+  <Condition Operator="NumberNotBetweenInclusive" Not="true">
+    <Value Source="Constant">
+      <Data>9</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>10</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2</Data>
+    </Value>
+  </Condition>
+</If>

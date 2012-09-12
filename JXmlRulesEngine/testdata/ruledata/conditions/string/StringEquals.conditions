@@ -1,0 +1,10 @@
+<If Operator="AND">
+  <Condition Operator="StringEquals">
+    <Value Source="Constant">
+      <Data>data</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>data</Data>
+    </Value>
+  </Condition>
+</If>

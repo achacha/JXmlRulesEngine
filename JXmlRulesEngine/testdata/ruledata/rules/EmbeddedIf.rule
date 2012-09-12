@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Rule Version="1">
+  <Case>
+    <If Operator="AND">
+      <Compare Operator="StringEquals">
+        <Value Source="Constant">
+          <Data>data</Data>
+        </Value>
+        <Value Source="Constant">
+          <Data>data</Data>
+        </Value>
+      </Compare>  
+      <If Operator="AND">
+        <Condition Operator="StringEquals">
+          <Value Source="Constant">
+            <Data>data</Data>
+          </Value>
+          <Value Source="Constant">
+            <Data>data</Data>
+          </Value>
+        </Condition>  
+        <If Operator="OR">
+          <Condition Operator="StringEquals">
+            <Value Source="Constant">
+              <Data>data</Data>
+            </Value>
+            <Value Source="Constant">
+              <Data>data</Data>
+            </Value>
+          </Condition>  
+          <Condition Operator="StringEquals">
+            <Value Source="Constant">
+              <Data>data</Data>
+            </Value>
+            <Value Source="Constant">
+              <Data>data1</Data>
+            </Value>
+          </Condition>  
+        </If>
+        <Condition Operator="StringEquals">
+          <Value Source="Constant">
+            <Data>data</Data>
+          </Value>
+          <Value Source="Constant">
+            <Data>data</Data>
+          </Value>
+        </Condition>  
+      </If>
+      <Condition Operator="StringEquals">
+        <Value Source="Constant">
+          <Data>data</Data>
+        </Value>
+        <Value Source="Constant">
+          <Data>data</Data>
+        </Value>
+      </Condition>  
+    </If>
+    <Then>
+      <Action Operator="Include">
+        <Path>Yes.actions</Path>
+      </Action>
+    </Then>
+  </Case>
+  <Else>
+    <Action Operator="Include">
+      <Path>No.actions</Path>
+    </Action>
+  </Else>
+</Rule>

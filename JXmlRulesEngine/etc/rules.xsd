@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="request">
+    <xs:annotation>
+      <xs:documentation>root element</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="rules-to-execute">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Rule" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EventVisitor" minOccurs="0"/>
+        <xs:element ref="ruledata" minOccurs="0"/>
+        <xs:element ref="pre-processor" minOccurs="0"/>
+        <xs:element ref="post-processor" minOccurs="0"/>
+        <xs:element ref="input" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ruledata">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element name="If" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="Editor" minOccurs="0" maxOccurs="1"/>
+              <xs:element ref="Condition" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="Operator" type="IfOperator" use="required"/>
+            <xs:attribute name="Name" use="required"/>
+            <xs:attribute name="Version" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Actions" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="Editor" minOccurs="0" maxOccurs="1"/>
+              <xs:element ref="Action" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="Name" use="required"/>
+            <xs:attribute name="Version" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="Rule" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="File" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rule">
+    <xs:annotation>
+      <xs:documentation>Rule</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Case" maxOccurs="unbounded" />
+        <xs:element ref="Else" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="Version" use="optional" />
+      <xs:attribute name="Name" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="File" type="xs:anyType" />
+  <xs:element name="Action" type="xs:anyType">
+    <xs:annotation>
+      <xs:documentation>Action</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Editor" type="xs:anyType">
+    <xs:annotation>
+      <xs:documentation>Editor specific</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Then">
+    <xs:annotation>
+      <xs:documentation>Then</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="Editor" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="Action" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Else">
+    <xs:annotation>
+      <xs:documentation>Else</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="Editor" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="Action" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Case">
+    <xs:annotation>
+      <xs:documentation>Case</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="If"/>
+        <xs:element ref="Then" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="If">
+    <xs:annotation>
+      <xs:documentation>If</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="Editor" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="If" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="Condition" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:choice>
+      <xs:attribute name="Operator" type="IfOperator" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Condition">
+    <xs:annotation>
+      <xs:documentation>Condition</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Editor" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="Path" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="Value" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Operator" type="ConditionOperator" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="ConditionOperator">
+    <xs:annotation>
+      <xs:documentation>Possible Condition Operators</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Exists"/>
+      <xs:enumeration value="NotExists"/>
+      <xs:enumeration value="BooleanEquals"/>
+      <xs:enumeration value="BooleanNotEquals"/>
+      <xs:enumeration value="BooleanTrue"/>
+      <xs:enumeration value="BooleanFalse"/>
+      <xs:enumeration value="CollectionStringContains"/>
+      <xs:enumeration value="CollectionStringRegExp"/>
+      <xs:enumeration value="CollectionStringNotContains"/>
+      <xs:enumeration value="CollectionStringNotRegExp"/>
+      <xs:enumeration value="DateAfter"/>
+      <xs:enumeration value="DateBefore"/>
+      <xs:enumeration value="DateBetween"/>
+      <xs:enumeration value="DateEquals"/>
+      <xs:enumeration value="DateNotAfter"/>
+      <xs:enumeration value="DateNotBefore"/>
+      <xs:enumeration value="DateNotBetween"/>
+      <xs:enumeration value="DateNotEquals"/>
+      <xs:enumeration value="Include"/>
+      <xs:enumeration value="NumberBetweenExclusive"/>
+      <xs:enumeration value="NumberBetweenInclusive"/>
+      <xs:enumeration value="NumberEquals"/>
+      <xs:enumeration value="NumberGreaterThan"/>
+      <xs:enumeration value="NumberLessThan"/>
+      <xs:enumeration value="NumberGreaterThanOrEquals"/>
+      <xs:enumeration value="NumberLessThanOrEquals"/>
+      <xs:enumeration value="NumberNotBetweenExclusive"/>
+      <xs:enumeration value="NumberNotBetweenInclusive"/>
+      <xs:enumeration value="NumberNotEquals"/>
+      <xs:enumeration value="NumberNotGreaterThan"/>
+      <xs:enumeration value="NumberNotLessThan"/>
+      <xs:enumeration value="NumberNotGreaterThanOrEquals"/>
+      <xs:enumeration value="NumberNotLessThanOrEquals"/>
+      <xs:enumeration value="NumberDialExclusive"/>
+      <xs:enumeration value="NumberDialInclusive"/>
+      <xs:enumeration value="StringContains"/>
+      <xs:enumeration value="StringEndsWith"/>
+      <xs:enumeration value="StringEquals"/>
+      <xs:enumeration value="StringGreaterThan"/>
+      <xs:enumeration value="StringLessThan"/>
+      <xs:enumeration value="StringRegExp"/>
+      <xs:enumeration value="StringStartsWith"/>
+      <xs:enumeration value="StringNotContains"/>
+      <xs:enumeration value="StringNotEndsWith"/>
+      <xs:enumeration value="StringNotEquals"/>
+      <xs:enumeration value="StringNotGreaterThan"/>
+      <xs:enumeration value="StringNotLessThan"/>
+      <xs:enumeration value="StringNotRegExp"/>
+      <xs:enumeration value="StringNotStartsWith"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="IfOperator">
+    <xs:annotation>
+      <xs:documentation>Possible If Operators</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AND"/>
+      <xs:enumeration value="OR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Value">
+    <xs:annotation>
+      <xs:documentation>Value</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element ref="Editor" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element name="Path"/>
+          <xs:element ref="Bean" minOccurs="0"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element name="Data"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attribute name="Source" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Bean">
+    <xs:annotation>
+      <xs:documentation>Bean</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Path" type="xs:string"/>
+        <xs:element name="Method" type="xs:string" minOccurs="0"/>
+        <xs:element name="MethodParam" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="Object" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="input" type="xs:anyType" />
+  <xs:element name="pre-processor" type="xs:anyType" />
+  <xs:element name="post-processor" type="xs:anyType" />
+</xs:schema>

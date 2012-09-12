@@ -1,0 +1,10 @@
+<If Operator="AND">
+  <Condition Operator="StringGreaterThan">
+    <Value Source="Constant">
+      <Data>Spock</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>Data</Data>
+    </Value>
+  </Condition>
+</If>

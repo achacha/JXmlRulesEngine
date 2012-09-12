@@ -1,0 +1,11 @@
+<If Operator="AND">
+  <Condition Operator="StringEquals">
+    <Value Source="InputModel">
+      <Path>foo</Path>
+      <Content>data</Content>
+    </Value>
+    <Value Source="Constant">
+      <Data>data</Data>
+    </Value>
+  </Condition>
+</If>

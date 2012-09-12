@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<request>
+  <input>
+    <red>
+      <green>
+        <blue/>
+      </green>
+    </red>
+    <cyan>
+      <magenta>
+        <yellow>
+          <black/>
+        </yellow>
+      </magenta>
+    </cyan>
+  </input>
+  <pre-processor Name="internalTest">
+    <pre/>
+  </pre-processor>
+  <post-processor Name="internalTest">
+    <post/>
+  </post-processor>
+  <rules-to-execute>
+    <Rule>Exists.rule</Rule>
+  </rules-to-execute>
+  <!--logging-level>5</logging-level-->
+  <output>
+    <internalTest>Frobozz</internalTest>
+    <processor>
+      <pre/>
+    </processor>
+    <result>yes</result>
+    <internalTest>Frobozz</internalTest>
+    <processor>
+      <post/>
+    </processor>
+  </output>
+</request>

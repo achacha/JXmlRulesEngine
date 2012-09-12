@@ -1,0 +1,11 @@
+<If Operator="AND">
+  <Condition Operator="NumberEquals">
+    <Value Source="Constant">
+      <Data>13</Data>
+    </Value>
+    <Value Source="InputModel">
+      <Path>somenumber</Path>
+      <Content>13</Content>
+    </Value>
+  </Condition>
+</If>

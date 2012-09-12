@@ -1,0 +1,8 @@
+<If Operator="AND">
+  <Condition Operator="BooleanTrue">
+    <Value Source="InputModel">
+      <Path>something</Path>
+      <Content>true</Content>
+    </Value>
+  </Condition>
+</If>

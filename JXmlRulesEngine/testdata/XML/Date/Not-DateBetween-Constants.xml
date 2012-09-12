@@ -1,0 +1,51 @@
+<test>
+<request>
+  <ruledata>
+<If Name="c1" Operator="AND">
+  <Condition Operator="DateBetween">
+    <Value Source="Constant">
+      <Data>2008-06-23</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2008-06-24</Data>
+    </Value>
+    <Value Source="Constant">
+      <Data>2008-06-25</Data>
+    </Value>
+  </Condition>
+</If>
+    <Actions Name="t1" Version="1">
+      <Action Operator="OutputValueSet">
+        <Path>/outdata/compare</Path>
+        <Value Source="Constant"><Data>yes</Data></Value>
+      </Action>
+    </Actions>
+    <Actions Name="t2" Version="1">
+      <Action Operator="OutputValueSet">
+        <Path>/outdata/compare</Path>
+        <Value Source="Constant"><Data>no</Data></Value>
+      </Action>
+    </Actions>
+    <Rule Name="rule1" Version="1">
+      <Case>
+        <If Operator="AND" Name="ic1" Version="1">
+          <Condition Operator="Include">
+            <Path>c1</Path>
+          </Condition>
+        </If>
+        <Then Version="1">
+          <Action Operator="Include">
+            <Path>t1</Path>
+          </Action>
+        </Then>
+      </Case>
+      <Else Version="1">
+        <Action Operator="Include">
+          <Path>t2</Path>
+        </Action>
+      </Else>
+    </Rule>
+  </ruledata>
+</request>
+<response><output><outdata><compare>no</compare></outdata></output></response>
+</test>
