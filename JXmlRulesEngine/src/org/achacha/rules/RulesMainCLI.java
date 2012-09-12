@@ -1,6 +1,8 @@
 package org.achacha.rules;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import org.achacha.rules.engine.base.RuleContext;
 import org.achacha.rules.engine.base.RulesEngineHelper;
@@ -51,6 +53,7 @@ public class RulesMainCLI
     CommandLine cl = null;
     Options options = new Options();
     options.addOption("p", "path", true, "Base path for the rule set");
+    options.addOption("o", "output", true, "File to write output XML");
     options.addOption("r", "request", true, "Request to process against the rules");
     options.addOption("h", "help", false, "Help");
     options.addOption("l", "logging-level", true, "Logging level (0-disabled, 1-errors, 2-events, 3-warnings, 4-info, 5-debug)");
@@ -95,6 +98,8 @@ public class RulesMainCLI
       return;
     }
 
+    String[] outputPaths = cl.getOptionValues('o');
+    
     // Init rules engine
     RulesEngineGlobal.create(basePaths[0]);
 
@@ -104,16 +109,28 @@ public class RulesMainCLI
     
     // Execute rule
     RuleContext ruleContext = RulesEngineGlobal.getInstance().getRulesEngine().createContext(requestDoc.getRootElement(), loggingLevel);
-//    Rule rule = RulesEngineGlobal.getInstance().getRulesEngine().getRule("ColorRed.rule.xml");
     RulesEngineGlobal.getInstance().getRulesEngine().execute(ruleContext);
     
-    try
+    if (null != outputPaths)
+    {
+      File outfile = new File(outputPaths[0]);
+      try
+      {
+        System.out.println("Writing output to: "+outputPaths[0]);
+        FileWriter writer = new FileWriter(outfile);
+        writer.write(ruleContext.getOutputModel().asXML());
+        writer.close();
+      }
+      catch(IOException e)
+      {
+        
+        e.printStackTrace();
+      }
+      
+    }
+    else
     {
       System.out.println(ruleContext);
-    }
-    catch(Exception e)
-    {
-      e.printStackTrace();
     }
   }
 }
