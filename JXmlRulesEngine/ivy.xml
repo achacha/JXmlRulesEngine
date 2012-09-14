@@ -14,6 +14,7 @@
 		<dependency org="commons-io" name="commons-io" rev="2.4" />
 		<dependency org="org.json" name="json" rev="20090211" />
 		<dependency org="commons-beanutils" name="commons-beanutils" rev="1.8.3" />
+		<dependency org="junit" name="junit" rev="4.10"/>
 		<!-- dependency org="org.springframework" name="spring-beans"	rev="3.0.6.RELEASE">
 			<exclude org="javax.servlet" />
 			<exclude org="javax.el" />
