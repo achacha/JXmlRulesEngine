@@ -25,9 +25,9 @@ How do I set it up? (in great detail)
 
 How do I run unit tests?
 ---------------------
-(`ant resolve`) - just once, to pull in external dependencies using Ivy
+`ant resolve` - just once, to pull in external dependencies using Ivy
 
-(`ant test`) - to run the unit tests
+`ant test` - to run the unit tests
 
 
 
