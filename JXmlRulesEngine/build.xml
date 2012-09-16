@@ -62,6 +62,11 @@
 		<javac srcdir="src" destdir="bin" classpathref="lib.path.ref" includeantruntime="false" />
 	</target>
 
+	<target name="build.test.create" description="- Build java classes">
+		<javac srcdir="src" destdir="bin" classpathref="lib.path.ref" includeantruntime="false" />
+		<javac srcdir="test" destdir="bin" classpathref="lib.path.ref" includeantruntime="false" />
+	</target>
+
 	<path id="exec.lib.path.ref">
 		<fileset dir="lib" includes="*.jar" />
 		<fileset dir="build" includes="*.jar" />
@@ -69,11 +74,11 @@
 
 	<path id="test.lib.path.ref">
 		<fileset dir="lib" includes="*.jar" />
-		<fileset dir="build" includes="*.jar" />
+		<fileset dir="build" includes="JXmlRulesEngine.jar" />
 		<pathelement location="data/unittest/" />
 	</path>
 
-	<target name="build.jar" depends="build.create" description="- Build jar file">
+	<target name="build.jar" depends="build.test.create" description="- Build jar file">
 		<jar basedir="bin" destfile="build/JXmlRulesEngine.jar">
 			<fileset dir="bin" />
 			<fileset dir="classes" />
