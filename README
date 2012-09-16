@@ -22,6 +22,17 @@ How do I set it up? (in great detail)
 4. For the imported project, right click and Properties | Java | Java Build Path | Libraries and select JRE System Library and change that to your JDK (version 1.6 or newer please)
 
 
+<h3>How do I run unit tests?</h3>
+<b>ant resolve</b> - <i>just once, to pull in external dependencies using Ivy</i><br/>
+
+<b>ant test</b> - to run the unit tests
 
 
-v0.5alpha - not yet ready for prime time
+
+TODO
+-----
+I am working on documentation, samples and tutorials.  The engine is fully functional and passes all unit tests.
+
+
+
+v0.9 - All works but not yet well documented.
