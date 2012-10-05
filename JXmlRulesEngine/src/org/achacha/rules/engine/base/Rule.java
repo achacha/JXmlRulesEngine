@@ -30,7 +30,7 @@ import org.json.JSONObject;
  */
 public class Rule implements XmlSerializable, Serializable, JsonEmittable, JsonParseable
 {
-  /** Serial id */
+  /** Serial id also the version of the rule */
   private static final long serialVersionUID = 1L;
 
   /** Current version */
@@ -81,8 +81,13 @@ public class Rule implements XmlSerializable, Serializable, JsonEmittable, JsonP
   {
     assert root.getName().equals(ELEMENT) : "Element name must be '" + ELEMENT + "': " + root.asXML();
 
-    // a_Make sure the version being executed is current
-    if (!root.attributeValue(ATTR_VERSION).equals(VERSION))
+    // Make sure the version being executed is current, if none assume '1'
+    String version = root.attributeValue(ATTR_VERSION);
+    if (null == version)
+    {
+      version = "1";
+    }
+    if (!version.equals(VERSION))
     {
       throw new RuntimeException("Version attribute mismatch, expected '" + VERSION + "' in: " + root.asXML());
     }
