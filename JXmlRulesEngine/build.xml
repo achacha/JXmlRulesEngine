@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="JXmlRulesEngine" default="resolve" xmlns:ivy="antlib:org.apache.ivy.ant">
 
-	<target name="ivy.init">
+	<property name="ivy.lib.dir" value="lib"/>
+
+    <target name="ivy.init">
 		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant">
 			<classpath>
 				<pathelement location="ivy.jar" />
@@ -29,34 +31,35 @@
 		<ivy:info file="ivy.xml" />
 		<echo>Please enter configuration (or comma separated list of configurations).  Available configurations are: ${ivy.configurations}</echo>
 		<input message="Configuration(s):" addproperty="ivy.confs" />
-		<ivy:retrieve conf="${ivy.confs}" />
-		<antcall target="report" inheritRefs="true" />
+		<ivy:retrieve conf="${ivy.confs}" sync="true"/>
 	</target>
 
 	<target name="ivy.resolve" depends="ivy.init" description="- Retrieves all Ivy dependencies into the lib directory">
-		<ivy:retrieve />
+		<ivy:retrieve sync="true" />
 	</target>
+
+    <target name="resolve" depends="ivy.resolve" description="- Gather all libs">
+        <echo message="Copying JAR files from ../external_lib to lib" />
+        <copy todir="lib">
+            <fileset dir="../external_lib" includes="*.jar">
+                <exclude name="**/*-javadoc*" />
+                <exclude name="**/*-sources*" />
+            </fileset>
+        </copy>
+    </target>
+
+    <path id="lib.path.ref">
+        <fileset dir="lib" includes="*.jar" />
+    </path>
+
 
 	<target name="build.clean" description="- Remove all intermediate build files">
 		<delete includeemptydirs="true" failonerror="false">
 			<fileset dir="bin" includes="**/*" />
 		</delete>
 		<delete file="build/JXmlRulesEngine.jar" failonerror="false" />
+        <delete file="build/JXmlRulesEngine-sources.jar" failonerror="false" />
 	</target>
-
-	<target name="resolve" depends="ivy.resolve" description="- Gather all libs">
-		<echo message="Copying JAR files from ../external_lib to lib" />
-		<copy todir="lib">
-			<fileset dir="../external_lib" includes="*.jar">
-				<exclude name="**/*-javadoc*" />
-				<exclude name="**/*-sources*" />
-			</fileset>
-		</copy>
-	</target>
-
-	<path id="lib.path.ref">
-		<fileset dir="lib" includes="*.jar" />
-	</path>
 
 	<target name="build.create" description="- Build java classes">
 		<javac srcdir="src" destdir="bin" classpathref="lib.path.ref" includeantruntime="false" />
@@ -85,6 +88,10 @@
 		</jar>
 	</target>
 
+    <target name="build.sources" description="- Build sources jars for distribution">
+        <jar basedir="src" destfile="build/JXmlRulesEngine-sources.jar"/>
+	</target>
+
 	<target name="test" depends="build.jar" description="- Run all the unit tests">
 		<junit printsummary="on">
 			<classpath refid="test.lib.path.ref" />
@@ -99,25 +106,29 @@
 	<target name="clean" depends="ivy.clean,build.clean,dist.clean" description="- Clean ALL intermediate files" />
 
 	<target name="dist.clean" description="- Clean distribution directories">
-		<delete dir="dist" />
+        <delete dir="dist" />
 		<mkdir dir="dist" />
 	</target>
 
-	<target name="dist" depends="resolve,dist.clean,build.jar" description="- Build package for distribution">
-		<mkdir dir="dist/JXmlRulesEngine/lib" />
+	<target name="dist.init" depends="">
+        <mkdir dir="dist/JXmlRulesEngine/lib" />
+	</target>
+
+    <target name="dist" depends="resolve,dist.clean,dist.init,build.jar,build.sources" description="- Build package for distribution">
 		<copy tofile="dist/JXmlRulesEngine/do.sh" file="dist_base/do.sh" />
 		<chmod file="dist/JXmlRulesEngine/do.sh" perm="+x" />
 		<copy todir="dist/JXmlRulesEngine/lib" file="build/JXmlRulesEngine.jar" />
+        <copy todir="dist/JXmlRulesEngine/lib" file="build/JXmlRulesEngine-sources.jar" />
 		<copy todir="dist/JXmlRulesEngine/lib">
 			<fileset dir="lib" includes="*.jar">
 				<exclude name="**/*-javadoc*" />
 				<exclude name="**/*-sources*" />
 			</fileset>
 		</copy>
-    <copy todir="dist/JXmlRulesEngine/classes">
-      <fileset dir="classes" includes="*" />
-    </copy>
-		<tar basedir="dist" compression="gzip" destfile="dist/JXmlRulesEngine.tar.gz" />
+        <copy todir="dist/JXmlRulesEngine/classes">
+          <fileset dir="classes" includes="*" />
+        </copy>
+	    <tar basedir="dist" compression="gzip" destfile="dist/JXmlRulesEngine.tar.gz" />
 	</target>
 
 </project>
