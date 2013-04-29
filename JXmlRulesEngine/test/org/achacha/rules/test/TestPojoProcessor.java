@@ -6,6 +6,7 @@ import java.io.File;
 import org.achacha.rules.engine.RulesEngine;
 import org.achacha.rules.engine.base.RuleContext;
 import org.achacha.rules.engine.base.RulesEngineHelper;
+import org.achacha.rules.testbase.RulesEngineUnitTestBase;
 import org.achacha.rules.util.EventVisitor;
 import org.dom4j.Document;
 import org.dom4j.Element;

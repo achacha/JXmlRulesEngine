@@ -1,1 +1,7 @@
 .metadata
+RemoteSystemsTempFiles
+maven-archiver
+surefire-reports
+output
+output-test
+

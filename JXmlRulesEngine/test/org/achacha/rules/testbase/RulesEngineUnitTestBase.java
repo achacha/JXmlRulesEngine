@@ -1,4 +1,4 @@
-package org.achacha.rules.test;
+package org.achacha.rules.testbase;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,7 +58,7 @@ public class RulesEngineUnitTestBase extends TestCase
     InputStream is = this.getClass().getResourceAsStream("/test.properties");
     if (null == is)
     {
-      throw new RuntimeException("Unable to find test.properties in the classpath, please add testdata directory to classpath of this test");
+      throw new RuntimeException("Unable to find test.properties in the classpath, please add data/unittest directory to classpath of this test");
     }
     assertNotNull(is);
     try
@@ -90,7 +90,7 @@ public class RulesEngineUnitTestBase extends TestCase
    * 
    * @return RulesEngine
    */
-  RulesEngine getFileSystemRulesEngine()
+  protected RulesEngine getFileSystemRulesEngine()
   {
     if (null == mRulesEngine)
     {

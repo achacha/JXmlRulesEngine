@@ -1,6 +1,7 @@
 
 package org.achacha.rules.test;
 
+import org.achacha.rules.testbase.RulesEngineUnitTestBase;
 import org.achacha.rules.util.EventVisitor;
 import org.dom4j.Element;
 
